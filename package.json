@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/chaostreff-flensburg/ARTankJ5#readme",
   "dependencies": {
+    "gamepad": "^1.4.2",
     "johnny-five": "^0.11.3"
   }
 }
