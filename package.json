@@ -1,0 +1,28 @@
+{
+  "name": "ARTankJ5",
+  "version": "0.0.1",
+  "description": "The ARTank Project with Johnny Five on board",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaostreff-flensburg/ARTankJ5"
+  },
+  "keywords": [
+    "Arduino",
+    "RaspberryPi",
+    "Robot",
+    "Johnny-Five"
+  ],
+  "author": "Michael Schäfer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chaostreff-flensburg/ARTankJ5/issues"
+  },
+  "homepage": "https://github.com/chaostreff-flensburg/ARTankJ5#readme",
+  "dependencies": {
+    "johnny-five": "^0.11.3"
+  }
+}
