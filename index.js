@@ -6,6 +6,7 @@ var five = require("johnny-five");
 // var board = new five.Board({repl: false});
 var board = new five.Board();
 
+var gamepad = require("gamepad");
 
 board.on("ready", function () {
 
@@ -25,6 +26,72 @@ board.on("ready", function () {
 
     // Some example event handlers for the driving motors
 
+    
+    gamepad.init();
+
+    for (var i = 0, l = gamepad.numDevices(); i < l; i++) {
+      console.log(i, gamepad.deviceAtIndex());
+    }
+
+    setInterval(gamepad.processEvents, 16);
+    setInterval(gamepad.detectDevices, 500);
+
+    gamepad.on("move", function (id, axis, value) {
+      console.log("move", {
+        id: id,
+        axis: axis,
+        value: value,
+      });
+
+      if ( axis == 5 ) {
+        if ( value == -1 ) {
+          motor2.forward(255);
+        }
+
+        if ( value == 1 ) {
+          motor2.reverse(255);
+        }
+
+        if ( value == 0 ) {
+          motor2.stop();
+        }
+      }
+    });
+
+    gamepad.on("up", function (id, num) {
+      console.log("up", {
+        id: id,
+        num: num,
+      });
+
+      if ( num == 3 ) {
+        motor1.stop();
+      }
+
+      if ( num == 1 ) {
+        motor1.stop();
+      }
+
+    });
+
+    gamepad.on("down", function (id, num) {
+      console.log("down", {
+        id: id,
+        num: num,
+      });
+
+      if ( num == 3 ) {
+        motor1.forward(255);
+      }
+
+      if ( num == 1 ) {
+        motor1.reverse(255);
+      }
+    });
+
+
+
+    /*
     motor1.on("start", function () {
         console.log("Start M1", Date.now());
     });
@@ -76,5 +143,6 @@ board.on("ready", function () {
     motor1.forward(150);
     motor2.forward(150);
 
+    */
 });
 
